@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WVT Play · Portal</title>
+  <style>
+    :root{font-family:Inter,system-ui,sans-serif;color:#eaf4f5;background:#07151b}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% 0,#174858 0,#07151b 48%)}main{width:min(760px,calc(100% - 32px));margin:0 auto;padding:48px 0}.brand{color:#6ce2d1;letter-spacing:.14em;font-size:13px;font-weight:700}.card{margin-top:18px;padding:28px;border:1px solid #244653;border-radius:22px;background:#10252d;box-shadow:0 20px 60px #0005}h1{margin:8px 0 10px;font-size:clamp(27px,6vw,42px)}p{color:#aac2c7;line-height:1.5}label{display:block;margin:20px 0 7px;color:#c8dadd;font-size:14px;font-weight:600}input,select{width:100%;border:1px solid #315762;border-radius:12px;background:#091a21;color:#fff;padding:14px;font:inherit}button{border:0;border-radius:12px;padding:13px 18px;background:#6ce2d1;color:#082027;font-weight:800;cursor:pointer}button.secondary{background:#1c3a45;color:#dff8f6;margin-left:8px}.row{display:flex;gap:10px;align-items:center}.row>*{flex:1}.status{margin-top:18px;padding:12px;border-radius:10px;background:#0a1b22;color:#a8c9ce;display:none}.playlist{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:12px;padding:14px;border-radius:13px;background:#0b1c23}.playlist small{display:block;color:#91b2b8;margin-top:4px;word-break:break-all}.danger{background:#522b35;color:#ffdfe4;padding:9px 12px}
+  </style>
+</head>
+<body><main>
+  <div class="brand">WVT PLAY · PORTAL DE DISPOSITIVO</div>
+  <section class="card">
+    <h1>Gerencie sua lista pelo navegador</h1>
+    <p>Informe o Device Key mostrado no aplicativo para cadastrar ou trocar suas listas sem mexer na TV ou no celular.</p>
+    <label for="device">Device Key</label><input id="device" placeholder="Ex.: WVT-7F3A-92KD">
+    
+    <button id="login">Entrar no dispositivo</button><div id="status" class="status"></div>
+    <div id="panel" hidden>
+      <label for="kind">Tipo de conexão</label><select id="kind"><option value="m3u">URL M3U/M3U8</option><option value="xtream">Xtream Codes</option></select>
+      <label for="name">Nome da lista</label><input id="name" placeholder="Minha lista">
+      <label for="source">URL M3U ou servidor/DNS</label><input id="source" placeholder="https://servidor.exemplo/lista.m3u">
+      <div id="xtreamFields" hidden class="row"><input id="user" placeholder="Usuário"><input id="pass" type="password" placeholder="Senha"></div>
+      <br><button id="save">Salvar lista</button>
+      <h3>Listas cadastradas</h3><div id="playlists"></div>
+    </div>
+  </section>
+</main><script>
+const $=id=>document.getElementById(id),API='https://archlinux.tailb8c0b0.ts.net/wvt-api';let current='';
+function msg(t){$('status').textContent=t;$('status').style.display='block'}
+async function request(path,opts={}){const r=await fetch(API+path,opts);const j=await r.json();if(!r.ok)throw new Error(j.error||('HTTP '+r.status));return j}
+function render(items=[]){$('playlists').innerHTML=items.length?items.map((x,i)=>`<div class="playlist"><div><b>${x.name}</b><small>${x.kind.toUpperCase()} · ${x.source}</small></div><button class="danger" onclick="removeItem(${i})">Remover</button></div>`).join(''):'<p>Nenhuma lista cadastrada.</p>'}
+window.removeItem=async i=>{if(!confirm('Remover esta lista do dispositivo?'))return;try{await request('/api/devices/'+encodeURIComponent(current)+'/playlists/'+i,{method:'DELETE'});const j=await request('/api/devices/'+encodeURIComponent(current));render(j.playlists);msg('Lista removida.');}catch(e){msg('Não foi possível remover: '+e.message)}}
+$('kind').onchange=()=>{$('xtreamFields').hidden=$('kind').value!=='xtream'};
+$('login').onclick=async()=>{current=$('device').value.trim().toUpperCase();if(!current)return msg('Informe o Device Key.');try{await request('/api/devices/'+encodeURIComponent(current));const j=await request('/api/devices/'+encodeURIComponent(current));$('panel').hidden=false;render(j.playlists);msg('Dispositivo conectado.');}catch(e){msg('Não foi possível conectar: '+e.message)}};
+$('save').onclick=async()=>{if(!current)return msg('Entre primeiro no dispositivo.');const source=$('source').value.trim();if(!source)return msg('Informe o endereço da lista.');try{await request('/api/devices/'+encodeURIComponent(current)+'/playlists',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('name').value.trim()||'Minha lista',kind:$('kind').value,source,user:$('user').value,pass:$('pass').value})});const j=await request('/api/devices/'+encodeURIComponent(current));$('name').value='';$('source').value='';msg('Lista enviada ao dispositivo.');render(j.playlists);}catch(e){msg('Não foi possível salvar: '+e.message)}};
+</script></body></html>
