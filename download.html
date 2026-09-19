@@ -12,9 +12,29 @@
   <section class="card">
     <h1>Instale o WVT Play</h1>
     <p>Assista TV ao vivo, filmes e séries usando sua própria lista M3U ou Xtream Codes.</p>
-    <p class="version">Versão 1.0.24 · Android 7.0 ou superior</p>
-    <a class="download" href="iptv-player.apk" download>Baixar APK</a>
+    <p class="version" id="app-version">Versão 1.0.34 · Android 7.0 ou superior</p>
+    <a class="download" id="apk-download" href="iptv-player.apk?v=56" download>Baixar APK</a>
     <ol><li>Abra o arquivo baixado.</li><li>Se solicitado, permita instalações deste navegador.</li><li>Instale e abra o aplicativo.</li></ol>
     <a class="back" href="index.html">← Voltar ao portal</a>
   </section>
-</main></body></html>
+</main>
+<script>
+  fetch('update.json?time=' + Date.now(), {cache: 'no-store'})
+    .then(response => {
+      if (!response.ok) throw new Error('manifesto indisponível');
+      return response.json();
+    })
+    .then(update => {
+      if (update.versionName) {
+        document.getElementById('app-version').textContent =
+          `Versão ${update.versionName} · Android 7.0 ou superior`;
+      }
+      if (update.apk) {
+        const separator = update.apk.includes('?') ? '&' : '?';
+        document.getElementById('apk-download').href =
+          update.apk + separator + 'v=' + encodeURIComponent(update.versionCode || update.versionName || 'atual');
+      }
+    })
+    .catch(() => {});
+</script>
+</body></html>
