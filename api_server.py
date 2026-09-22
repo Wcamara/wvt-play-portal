@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import json
+import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
-DB='/tmp/wvt-play-devices.json'
+DB=os.environ.get('WVT_PLAY_DB', os.path.join(os.path.dirname(__file__), 'devices.json'))
 def load():
  try:
   with open(DB) as f:return json.load(f)
