@@ -1,6 +1,6 @@
 {
-  "versionCode": 82,
-  "versionName": "1.0.60",
+  "versionCode": 83,
+  "versionName": "1.0.61",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Atualização compatível com instalações existentes e correções de atualização automática."
+  "changelog": "Grade de episódios com miniaturas, cartões estilizados e indicação de progresso."
 }
