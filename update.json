@@ -1,1 +1,6 @@
-{"versionCode": 80, "versionName": "1.0.58", "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk", "changelog": "Chromecast identifica TV ao vivo como LIVE, HLS com MIME correto e diferencia streams de filmes e séries para melhorar a reprodução em TVs e Android TV."}
+{
+  "versionCode": 81,
+  "versionName": "1.0.59",
+  "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
+  "changelog": "Sincronização remota pelo painel ativar.wvtcanais.site, botão para copiar a Device Key e configurações reorganizadas."
+}
