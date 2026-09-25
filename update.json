@@ -1,6 +1,6 @@
 {
-  "versionCode": 84,
-  "versionName": "1.0.62",
+  "versionCode": 85,
+  "versionName": "1.0.63",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Miniaturas dos episódios redimensionadas em proporção 16:9, com cantos arredondados e melhor alinhamento."
+  "changelog": "Player em tela cheia com controles mais rápidos, barra de reprodução otimizada, melhor início do streaming e aviso do próximo episódio integrado aos controles."
 }
