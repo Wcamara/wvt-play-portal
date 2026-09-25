@@ -1,6 +1,6 @@
 {
-  "versionCode": 85,
-  "versionName": "1.0.63",
+  "versionCode": 86,
+  "versionName": "1.0.64",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Player em tela cheia com controles mais rápidos, barra de reprodução otimizada, melhor início do streaming e aviso do próximo episódio integrado aos controles."
+  "changelog": "Toque único alterna os controles, toque duplo lateral avança ou volta 10 segundos e início do vídeo mais rápido."
 }
