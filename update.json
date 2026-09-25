@@ -1,6 +1,6 @@
 {
-  "versionCode": 86,
-  "versionName": "1.0.64",
+  "versionCode": 87,
+  "versionName": "1.0.65",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Toque único alterna os controles, toque duplo lateral avança ou volta 10 segundos e início do vídeo mais rápido."
+  "changelog": "Novo player WVT com controles próprios, barra de progresso arrastável, tempo, play/pause e botões de voltar e avançar."
 }
