@@ -1,6 +1,6 @@
 {
-  "versionCode": 81,
-  "versionName": "1.0.59",
+  "versionCode": 82,
+  "versionName": "1.0.60",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Sincronização remota pelo painel ativar.wvtcanais.site, botão para copiar a Device Key e configurações reorganizadas."
+  "changelog": "Atualização compatível com instalações existentes e correções de atualização automática."
 }
