@@ -1,6 +1,6 @@
 {
-  "versionCode": 91,
-  "versionName": "1.0.69",
+  "versionCode": 92,
+  "versionName": "1.0.70",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Corrige a ocultação automática dos controles próprios do player e o toque para mostrar ou esconder a barra WVT."
+  "changelog": "Séries com progresso visual, botão Continuar, navegação anterior/próximo e duração/formato. Filmes retomam de onde pararam. Downloads com cartões e botão Apagar aprimorados."
 }
