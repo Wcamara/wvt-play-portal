@@ -1,6 +1,6 @@
 {
-  "versionCode": 88,
-  "versionName": "1.0.66",
+  "versionCode": 89,
+  "versionName": "1.0.67",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Redesign completo do player WVT com controles próprios, barra arrastável, tempo, play/pause e botões de voltar e avançar."
+  "changelog": "Corrige o fechamento do app ao abrir o player em telas grandes e mantém os novos controles do WVT."
 }
