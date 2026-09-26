@@ -1,6 +1,6 @@
 {
-  "versionCode": 89,
-  "versionName": "1.0.67",
+  "versionCode": 90,
+  "versionName": "1.0.68",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Corrige o fechamento do app ao abrir o player em telas grandes e mantém os novos controles do WVT."
+  "changelog": "Painel permite apagar a lista remotamente; o app limpa a cópia local na próxima sincronização. Corrige layouts do player em telas grandes."
 }
