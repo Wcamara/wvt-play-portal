@@ -1,6 +1,6 @@
 {
-  "versionCode": 92,
-  "versionName": "1.0.70",
+  "versionCode": 93,
+  "versionName": "1.0.71",
   "apk": "https://wcamara.github.io/wvt-play-portal/iptv-player.apk",
-  "changelog": "Séries com progresso visual, botão Continuar, navegação anterior/próximo e duração/formato. Filmes retomam de onde pararam. Downloads com cartões e botão Apagar aprimorados."
+  "changelog": "Cache da lista IPTV, carregamento progressivo das capas, grade responsiva, proporção adaptável, animações suaves e interface mais leve."
 }
